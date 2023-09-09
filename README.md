@@ -45,9 +45,9 @@ Implementation in main
 // create a gui_manager instance
 gui_manager mygui(fps, timer_irq_num, timer_alarm_num, num_buffers, frame_width, frame_height, sclk_pin, mosi_pin, cs_pin, rst_pin, dc_pin);
 
-// create instance of custom gui element and shared pointer to it so we can update parameters from the main thread
-boxelement mybox(40,20,32,32);
+// create shared pointer to a new box element so we can update parameters from the main thread
 std::shared_ptr<boxelement> boxptr;
+boxptr.reset(new boxelement(40,20,32,32));
 
 // add box to gui_manager
 mygui.AddGuiElement(boxptr);
